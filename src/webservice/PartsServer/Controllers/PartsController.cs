@@ -78,6 +78,7 @@ namespace PartsService.Controllers
                 var existingParts = userParts.SingleOrDefault(x => x.PartID == partid);
                 if (existingParts != null)
                 {
+                    existingParts.Price = part.Price;
                     existingParts.Suppliers = part.Suppliers;
                     existingParts.PartType = part.PartType;
                     existingParts.PartAvailableDate = part.PartAvailableDate;
