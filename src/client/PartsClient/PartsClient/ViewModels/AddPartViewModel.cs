@@ -35,20 +35,33 @@ namespace PartsClient.ViewModels
         }
 
         string _partName;
-        public string PartName
-        {
-            get => _partName;
-            set
-            {
-                if (_partName == value)
-                    return;
+              public string PartName
+              {
+                     get => _partName;
+                     set
+                     {
+                            if (_partName == value)
+                                   return;
 
-                _partName = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PartName)));
-            }
-        }
+                            _partName = value;
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PartName)));
+                     }
+              }
+              double _price;
+              public double Price
+              {
+                     get => _price;
+                     set
+                     {
+                            if (_price == value)
+                                   return;
 
-        string _suppliers;
+                            _price = value;
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
+                     }
+              }
+
+              string _suppliers;
         public string Suppliers
         {
             get => _suppliers;
@@ -95,7 +108,7 @@ namespace PartsClient.ViewModels
 
         private async Task InsertPart()
         {
-            await PartsManager.Add(PartName, Suppliers, PartType);
+            await PartsManager.Add(PartName, Suppliers, PartType, Price);
 
             MessagingCenter.Send(this, "refresh");
 
@@ -104,13 +117,14 @@ namespace PartsClient.ViewModels
 
         private async Task UpdatePart()
         {
-            Part partToSave = new()
-            {
-                PartID = PartID,
-                PartName = PartName,
-                PartType = PartType,
-                Suppliers = Suppliers.Split(",").ToList()
-            };
+                     Part partToSave = new()
+                     {
+                            PartID = PartID,
+                            PartName = PartName,
+                            Price = Price,
+                            Suppliers = Suppliers.Split(",").ToList(),
+                            PartType = PartType,
+                     };
 
             await PartsManager.Update(partToSave);
 

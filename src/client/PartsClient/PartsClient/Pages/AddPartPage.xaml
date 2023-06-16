@@ -5,13 +5,14 @@
              Title="Edit Part">
 
     <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*,*" ColumnSpacing="5">
-        <TableView Intent="Data" Grid.Row="0" Grid.ColumnSpan="3">
+        <TableView Intent="Data" Grid.Row="0" Grid.ColumnSpan="3" >
             <TableRoot>
                 <TableSection Title="Part Info">
                     <EntryCell Label="Part ID" Text="{Binding PartID}" IsEnabled="False" />
                     <EntryCell Label="Part Name" Text="{Binding PartName}" />
                     <EntryCell Label="Part Type" Text="{Binding PartType}" />
                     <EntryCell Label="Supplier" Text="{Binding Suppliers}" />
+                    <EntryCell Label="Price" Text="{Binding Price}" />
                 </TableSection>
             </TableRoot>
         </TableView>

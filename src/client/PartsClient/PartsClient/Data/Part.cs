@@ -51,8 +51,21 @@ namespace PartsClient.Data
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TheSuppliers)));
             }
         }
+              double _price;
+              public double Price
+              {
+                     get => _price;
+                     set
+                     {
+                            if (_price == value)
+                                   return;
 
-        string _partType;
+                            _price = value;
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
+                     }
+              }
+
+              string _partType;
         public string PartType
         {
             get => _partType;
